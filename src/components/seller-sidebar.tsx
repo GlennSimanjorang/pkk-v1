@@ -2,9 +2,7 @@
 
 import * as React from "react";
 import {
-  BookOpen,
   Bot,
-  Settings2,
   SquareTerminal,
   ShoppingBag,
 } from "lucide-react";
@@ -34,21 +32,11 @@ const data = {
       url: "/seller/products",
       icon: Bot,
     },
-    // {
-    //   title: "Categories",
-    //   url: "/admin/categories",
-    //   icon: BookOpen,
-    // },
-    // {
-    //   title: "Products",
-    //   url: "/admin/products",
-    //   icon: Settings2,
-    // },
-    // {
-    //   title: "Orders",
-    //   url: "/admin/orders",
-    //   icon: ShoppingBag,
-    // },
+    {
+      title: "Orders",
+      url: "/seller/orders",
+      icon: ShoppingBag,
+    },
   ],
 };
 

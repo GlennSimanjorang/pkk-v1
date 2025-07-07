@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AppSidebar } from "@/components/app-sidebar";
+import { SellerSidebar } from "@/components/seller-sidebar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -83,13 +83,14 @@ async function getOrders(
       },
     });
 
+    const content = res.data.content;
     return {
-      data: res.data.content.data,
-      from: res.data.content.from,
-      to: res.data.content.to,
-      hasNext: !!res.data.content.next_page_url,
-      hasPrev: !!res.data.content.prev_page_url,
-      total: res.data.content.total,
+      data: content.data,
+      from: content.from,
+      to: content.to,
+      hasNext: !!content.next_page_url,
+      hasPrev: !!content.prev_page_url,
+      total: content.total || 0,
     };
   } catch (error) {
     console.error("Error fetching orders:", error);
@@ -129,7 +130,7 @@ async function updateOrderStatus(
   }
 }
 
-export default function OrdersPage() {
+export default function SellerOrdersPage() {
   const [data, setData] = React.useState<Order[]>([]);
   const [statusFilter, setStatusFilter] = React.useState<string>("");
   const [paginationMeta, setPaginationMeta] = React.useState({
@@ -180,7 +181,7 @@ export default function OrdersPage() {
 
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <SellerSidebar />
       <SidebarInset>
         <header className="flex h-16 items-center justify-between px-4">
           <div className="flex items-center space-x-2">

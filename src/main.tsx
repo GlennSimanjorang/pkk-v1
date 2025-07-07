@@ -14,6 +14,7 @@ import ProductsPage from "./admin/product/page";
 import OrdersPage from "./admin/orders/page";
 import SellerDashboard from "./seller/dashboard/page";
 import SellerProductsPage from "./seller/product/page";
+import SellerOrdersPage from "./seller/order/page";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -40,6 +41,14 @@ createRoot(document.getElementById("root")!).render(
             element={
               <ProtectedRoute allowedRoles={["seller"]}>
                 <SellerProductsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/seller/orders"
+            element={
+              <ProtectedRoute allowedRoles={["seller"]}>
+                <SellerOrdersPage />
               </ProtectedRoute>
             }
           />
