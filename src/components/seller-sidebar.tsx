@@ -1,13 +1,15 @@
+"use client";
+
 import * as React from "react";
 import {
   BookOpen,
   Bot,
-  Frame,
-  Map,
-  PieChart,
   Settings2,
   SquareTerminal,
+  ShoppingBag,
 } from "lucide-react";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
@@ -21,65 +23,72 @@ import {
 } from "@/components/ui/sidebar";
 
 const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
+      title: "Dashboard",
+      url: "/seller/dashboard",
       icon: SquareTerminal,
-      isActive: true,
-      items: [
-        { title: "History", url: "#" },
-        { title: "Starred", url: "#" },
-        { title: "Settings", url: "#" },
-      ],
     },
     {
-      title: "Models",
-      url: "#",
+      title: "Products",
+      url: "/seller/products",
       icon: Bot,
-      items: [
-        { title: "Genesis", url: "#" },
-        { title: "Explorer", url: "#" },
-        { title: "Quantum", url: "#" },
-      ],
     },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        { title: "Introduction", url: "#" },
-        { title: "Get Started", url: "#" },
-        { title: "Tutorials", url: "#" },
-        { title: "Changelog", url: "#" },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        { title: "General", url: "#" },
-        { title: "Team", url: "#" },
-        { title: "Billing", url: "#" },
-        { title: "Limits", url: "#" },
-      ],
-    },
-  ],
-  projects: [
-    { name: "Design Engineering", url: "#", icon: Frame },
-    { name: "Sales & Marketing", url: "#", icon: PieChart },
-    { name: "Travel", url: "#", icon: Map },
+    // {
+    //   title: "Categories",
+    //   url: "/admin/categories",
+    //   icon: BookOpen,
+    // },
+    // {
+    //   title: "Products",
+    //   url: "/admin/products",
+    //   icon: Settings2,
+    // },
+    // {
+    //   title: "Orders",
+    //   url: "/admin/orders",
+    //   icon: ShoppingBag,
+    // },
   ],
 };
 
 export function SellerSidebar(props: React.ComponentProps<typeof Sidebar>) {
   const { state } = useSidebar();
+  const [userData, setUserData] = React.useState<{
+    name: string;
+    role: string;
+    avatar: string;
+  } | null>(null);
+
+  React.useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const token = Cookies.get("token");
+        if (!token) return;
+
+        const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
+        const response = await axios.get(`${baseUrl}/api/v1/auth/self`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.data.success) {
+          const user = response.data.content;
+          setUserData({
+            name: user.name,
+            role: `Role: ${user.role}`,
+            avatar: user.profile_picture || "",
+          });
+        }
+      } catch (error) {
+        console.error("Failed to fetch user data", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   return (
     <Sidebar collapsible="icon" {...props}>
@@ -92,7 +101,17 @@ export function SellerSidebar(props: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        {userData ? (
+          <NavUser user={userData} />
+        ) : (
+          <div className="flex items-center gap-3 p-2">
+            <div className="bg-muted h-10 w-10 animate-pulse rounded-lg" />
+            <div className="grid gap-1.5">
+              <div className="bg-muted h-4 w-24 animate-pulse rounded" />
+              <div className="bg-muted h-3 w-16 animate-pulse rounded" />
+            </div>
+          </div>
+        )}
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
