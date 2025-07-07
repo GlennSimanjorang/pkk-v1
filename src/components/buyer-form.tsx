@@ -60,7 +60,6 @@ export function BuyerForm({
       if (response.status === 201) {
         alert("Register pembeli success");
       }
-      // Handle success (redirect, save token, etc)
     } catch (error) {
       console.error("Login error:", error);
 

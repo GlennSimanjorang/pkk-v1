@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { BookOpen, Bot, Settings2, SquareTerminal } from "lucide-react";
+import { BookOpen, Bot, Settings2, SquareTerminal, ShoppingBag} from "lucide-react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -19,24 +19,29 @@ import {
 const data = {
   navMain: [
     {
-      title: "Playground",
-      url: "#",
+      title: "Dashboard",
+      url: "/admin/dashboard",
       icon: SquareTerminal,
     },
     {
-      title: "Models",
-      url: "#",
+      title: "Majors",
+      url: "/admin/majors",
       icon: Bot,
     },
     {
-      title: "Documentation",
-      url: "#",
+      title: "Categories",
+      url: "/admin/categories",
       icon: BookOpen,
     },
     {
-      title: "Settings",
-      url: "#",
+      title: "Products",
+      url: "/admin/products",
       icon: Settings2,
+    },
+    {
+      title: "Orders",
+      url: "/admin/orders",
+      icon: ShoppingBag,
     },
   ],
 };
