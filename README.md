@@ -28,14 +28,13 @@
 git clone https://github.com/GlennSimanjorang/pkk-v1.git
 cd pkk-oms-v1
 
+1. lalu Jalankan 
 npm install
-Project ini sudah memiliki semua dependensi yang diperlukan, termasuk:
 
-
-1. Jalankan Init shadcn (Setup Awal)
+2. Jalankan Init shadcn (Setup Awal)
 npx shadcn-ui@latest init
 
-2. Tambahkan Komponen shadcn
+3. Tambahkan Komponen shadcn
 Kamu bisa menambahkan komponen satu per satu, atau semua komponen umum sekaligus:
 
 npx shadcn-ui@latest add button
