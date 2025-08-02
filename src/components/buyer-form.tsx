@@ -48,7 +48,7 @@ export function BuyerForm({
       const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
       const response = await axios.post(
-        `${baseUrl}/api/v1/auth/signup?type=buyer`,
+        `${baseUrl}/api/v1/auth/register`,
         data,
         {
           headers: {

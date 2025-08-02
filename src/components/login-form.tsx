@@ -74,7 +74,7 @@ export function LoginForm({
       } else if (userData.role === "seller") {
         navigate("/seller/dashboard");
       } else {
-        navigate("/buyer/dashboard");
+        navigate("/user/home");
       }
     } catch (error) {
       console.error("Login error:", error);

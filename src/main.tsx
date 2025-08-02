@@ -15,6 +15,7 @@ import OrdersPage from "./admin/orders/page";
 import SellerDashboard from "./seller/dashboard/page";
 import SellerProductsPage from "./seller/product/page";
 import SellerOrdersPage from "./seller/order/page";
+import HomePage from "./user/home/page";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -53,6 +54,16 @@ createRoot(document.getElementById("root")!).render(
             }
           />
 
+          {/* Buyer */}
+          <Route
+            path="/user/home"
+            element={
+              <ProtectedRoute allowedRoles={["buyer"]}>
+                <HomePage />
+              </ProtectedRoute>
+            }>
+
+            </Route>
 
 
           {/* Admin */}
