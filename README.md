@@ -25,7 +25,7 @@
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/nama-anda/pkk-oms-v1.git
+git clone https://github.com/GlennSimanjorang/pkk-v1.git
 cd pkk-oms-v1
 
 npm install
