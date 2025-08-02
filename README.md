@@ -1,69 +1,61 @@
-# React + TypeScript + Vite
+# 🏗️ PKK OMS v1
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**PKK OMS v1** adalah aplikasi comersial berbasis web yang dibangun dengan **React 19**, **Vite**, **TypeScript**, **Tailwind CSS**, dan **shadcn/ui**. Aplikasi ini menggunakan arsitektur modern dengan komponen yang dapat digunakan kembali dan antarmuka yang responsif.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Teknologi Utama
 
-## Expanding the ESLint configuration
+- **React 19** + **React Router DOM v7** – Navigasi dan UI
+- **Vite** – Bundler cepat untuk development & production
+- **TypeScript** – Type safety
+- **Tailwind CSS** – Styling utility-first
+- **shadcn/ui** – Komponen UI modern berbasis Radix UI & Tailwind
+- **Zod** + **React Hook Form** – Validasi form
+- **TanStack Table** – Tabel data dinamis
+- **Axios** – HTTP client
+- **ESLint** – Linting & kualitas kode
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+> ℹ️ `shadcn/ui` bukan package NPM — komponennya di-*copy* ke project secara lokal.
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🚀 Instalasi
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 1. Clone Repository
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+```bash
+git clone https://github.com/nama-anda/pkk-oms-v1.git
+cd pkk-oms-v1
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+npm install
+Project ini sudah memiliki semua dependensi yang diperlukan, termasuk:
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+1. Jalankan Init shadcn (Setup Awal)
+npx shadcn-ui@latest init
+
+2. Tambahkan Komponen shadcn
+Kamu bisa menambahkan komponen satu per satu, atau semua komponen umum sekaligus:
+
+npx shadcn-ui@latest add button
+npx shadcn-ui@latest add card
+npx shadcn-ui@latest add input
+npx shadcn-ui@latest add label
+npx shadcn-ui@latest add form
+npx shadcn-ui@latest add dialog
+npx shadcn-ui@latest add dropdown-menu
+npx shadcn-ui@latest add navigation-menu
+npx shadcn-ui@latest add avatar
+npx shadcn-ui@latest add accordion
+npx shadcn-ui@latest add select
+npx shadcn-ui@latest add table
+npx shadcn-ui@latest add toast
+npx shadcn-ui@latest add tooltip
+npx shadcn-ui@latest add skeleton
+npx shadcn-ui@latest add badge
+
+
+
+
+
