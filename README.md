@@ -54,6 +54,7 @@ npx shadcn-ui@latest add tooltip
 npx shadcn-ui@latest add skeleton
 npx shadcn-ui@latest add badge
 
+4. Lalu Jalankan NPM RUN DEV
 
 
 
